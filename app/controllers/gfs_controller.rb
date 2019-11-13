@@ -5,6 +5,12 @@ class GfsController < ApplicationController
   # GET /gfs.json
   def index
     @gfs = Gf.all
+
+
+    per_page = params[:per_page] || 20
+    @q = Gf.ransack(params[:q])
+    @data = @q.result()
+    @gfs = @data.paginate(:page => params[:page], :per_page => per_page)
   end
 
   # GET /gfs/1
