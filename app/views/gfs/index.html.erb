@@ -35,8 +35,8 @@
         <td><%= gf.url %></td>
         <td><%= gf.state %></td>
         <td><%= link_to 'Show', gf %></td>
-        <td><%= link_to 'Edit', edit_gf_path(gf) %></td>
-        <td><%= link_to 'Destroy', gf, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%#= link_to 'Edit', edit_gf_path(gf) %></td>
+        <td><%#= link_to 'Destroy', gf, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -44,7 +44,7 @@
 
 <br>
 
-<%= link_to 'New Gf', new_gf_path %>
+<%#= link_to 'New Gf', new_gf_path %>
 
 
 <%= will_paginate @gfs %>
