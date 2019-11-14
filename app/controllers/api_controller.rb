@@ -70,4 +70,23 @@ class ApiController < ActionController::API
 
         end
     end
+
+    def incomplete_gfs #请求下载数据未完成
+        gf = Gf.where(url: params["url"]).last rescue ''
+        if gf && gf.update(state:0)
+            render :json => {
+                :headcode => 200,
+                :message =>" ok",
+                data: gf,
+                },
+                :status => 200
+        else
+            render :json => {
+                :headcode => 404,
+                :message =>"not find",
+                data: "",
+                },
+                :status => 200
+        end
+    end
 end
