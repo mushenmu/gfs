@@ -1,6 +1,6 @@
 class ApiController < ActionController::Base
     def down #请求下载数据
-        gf = Gf.where(state:0).last rescue ''
+        gf = Gf.where(state:0).first rescue ''
         if gf && gf.update(state:1)
             render :json => {
                 :headcode => 200,
