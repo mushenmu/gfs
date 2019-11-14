@@ -1,4 +1,4 @@
-class ApiController < ActionController::Base
+class ApiController < ActionController::API
     def down #请求下载数据
         gf = Gf.where(state:0).first rescue ''
         if gf && gf.update(state:1)
@@ -38,21 +38,36 @@ class ApiController < ActionController::Base
     end
 
     def create_gfs
-        gf = Gf.create(url: params["url"])
-        if gf 
-            render :json => {
-                :headcode => 200,
-                :message =>" ok",
-                data: gf,
-                },
-                :status => 200
+        if params["url"] 
+            gf = Gf.create(url: params["url"])
+            if gf 
+                render :json => {
+                    :headcode => 200,
+                    :message =>" ok",
+                    data: gf,
+                    },
+                    :status => 200
+            else
+                render :json => {
+                    :headcode => 404,
+                    :message =>"not find",
+                    data: "",
+                    },
+                    :status => 200
+            end
+            
+        elsif params["data"]
+            data = []
+            params["data"].split('|').each do |url|
+                if url != ''
+                data << Gf.new(
+                    url: url
+                )
+                end
+            end
+            Gf.import data
         else
-            render :json => {
-                :headcode => 404,
-                :message =>"not find",
-                data: "",
-                },
-                :status => 200
+
         end
     end
 end
