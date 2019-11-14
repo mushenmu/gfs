@@ -64,3 +64,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'will_paginate'
 gem 'ransack'
+# 批量插入数据
+gem 'activerecord-import'
