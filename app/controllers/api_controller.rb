@@ -91,7 +91,7 @@ class ApiController < ActionController::API
     end
 
     def down_gas #请求下载数据
-        gf = Gf.where(state:0).first rescue ''
+        gf = Ga.where(state:0).first rescue ''
         if gf && gf.update(state:1)
             render :json => {
                 :headcode => 200,
