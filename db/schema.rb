@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_13_090301) do
+ActiveRecord::Schema.define(version: 2019_11_25_034644) do
+
+  create_table "gas", force: :cascade do |t|
+    t.string "url"
+    t.integer "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "gfes", force: :cascade do |t|
+    t.string "url"
+    t.integer "state", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "gfs", force: :cascade do |t|
     t.string "url"

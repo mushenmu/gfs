@@ -4,7 +4,7 @@ class GfsController < ApplicationController
   # GET /gfs
   # GET /gfs.json
   def index
-    @gfs = Gf.all
+    # @gfs = Gf.all
 
 
     per_page = params[:per_page] || 20

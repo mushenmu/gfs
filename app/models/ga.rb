@@ -1,0 +1,2 @@
+class Ga < ApplicationRecord
+end
