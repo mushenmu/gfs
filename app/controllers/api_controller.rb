@@ -91,7 +91,8 @@ class ApiController < ActionController::API
     end
 
     def down_gas #请求下载数据
-        gf = Ga.where(state:0).first rescue ''
+        year = params['year']
+        gf = Ga.where("url like ?", "%/#{year}/%").where(state:0).first rescue ''
         if gf && gf.update(state:1)
             render :json => {
                 :headcode => 200,
